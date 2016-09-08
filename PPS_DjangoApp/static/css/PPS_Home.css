@@ -6,10 +6,10 @@ nav {
     top:0;
     left:0;
     width:100%;
-    height:30%;   
+    height:25%;
 }
 
- table {
+ul {
     background-color:purple;
     position:relative;
     display:flex;
@@ -17,14 +17,13 @@ nav {
     justify-content:space-between;
 }
 
-table-cell {
+li {
     font-family:"Helvetica Neue", Helvetica, sans;
     text-align:center;
     color:white;
     background-color:fuchsia;
     width:30%;
     padding:5px;
-    margin:50px;
     border:2px solid aqua;
     border-radius:5px;
     list-style:none;
@@ -32,7 +31,7 @@ table-cell {
     flex-basis:70px;
 }
 
-#first-link {
+#active-link {
     color:navy;
     background-color:aqua;
     border:2px solid fuchsia;
@@ -44,7 +43,7 @@ table-cell {
     bottom:0;
     left:0;
     width:100%;
-    height:70%;
+    height:75%;
 }    
 
 #sitename {
@@ -57,10 +56,32 @@ table-cell {
     background-color:orchid;
     position:relative;
     width:100%;
-    height:5%;
-    padding:10px;
+    height:7%;
+    padding-top:3px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:13px;
     margin:12px;
-    border:10px solid #BA55D3;
+    border:5px solid #BA55D3;
+    border-radius:10px;
+}
+
+#pagename {
+    font-family:"Times New Roman", Times, serif;
+    color:blue;
+    font-size:24pt;
+    font-weight:700;
+    font-variant:small-caps;
+    text-align:center;
+    background-color:orchid;
+    position:relative;
+    width:100%;
+    height:7%;
+    padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+    margin:12px;
+    border:7px solid #BA55D3;
     border-radius:10px;
 }
 
@@ -68,6 +89,7 @@ h4 {
     font-family:"Helvetica Neue", Helvetica, sans;
     text-align:center;
     color:black;
+    -webkit-margin-after: 0.13em;
 }
 
 p {
@@ -75,4 +97,6 @@ p {
     text-align:left;
     color:black;
     padding:15px;
+    border:none;
+    margin-top:0px;
 }

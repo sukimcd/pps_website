@@ -13,11 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth.views import login
 from PPS_DjangoApp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', views.home),
+    url(r'^$', views.home, name='PPS_Home'),
+    url(r'^login/$', views.login),
+    #url(r'^member/create/$', views.create_member),
+    url(r'^member/detail/(?P<pk>\d*)/$', views.account),
+    #url(r'^member/update/(?P<pk>\d*)/$', views.update_member),
     ]
