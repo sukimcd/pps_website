@@ -2,5 +2,4 @@
 *.pyc
 migrations
 private
-settings.py
 __pycache__
