@@ -1,14 +1,30 @@
+<!--          PPS Navigation Bar HTML file          -->
+
+<link rel="stylesheet"
+          type="text/css"
+          href="/static/css/nav.css">
+
+
 <nav>
+
     <div id="sitename">
         <span>Post-Polio Syndrome</span>
     </div>
+
+
     <ul>
         <li>About Post-Polio Syndrome</li>
-        <li>Member Login</li>
+            {% if request.user.is_authenticated %}
+                <li>Logout</li>
+            {% else %}
+                <li>Member Login</li>
+            {% endif %}
         <li>Join Our Mailing List</li>
         <li>Find a Support Group</li>
         <li>Chat with other Polio Survivors</li>
         <li>Resources</li>
         <li>Contact Us</li>
     </ul>
+
+
 </nav>
