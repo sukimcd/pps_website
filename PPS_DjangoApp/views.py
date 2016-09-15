@@ -14,6 +14,12 @@ def home(request):
     return render(request, 'PPS_Home.html', context)
 
 
+def create_member(request):
+    regform = MemberForm(request.POST or None)
+    context = {'registration': regform}
+    return render(request, 'create_member.html', context)
+
+
 def resources(request):
     authform = AuthenticationForm(request.POST or None)
     context = {'login_dialog': authform}
@@ -30,6 +36,13 @@ def spprtgroups(request):
     authform = AuthenticationForm(request.POST or None)
     context = {'login_dialog': authform}
     return render(request, 'spprtgroups.html', context)
+
+
+def unauth_error(request):
+    authform = AuthenticationForm(request.POST or None)
+    context = {'login_dialog': authform}
+    return render(request, 'unauth_error.html', context)
+
 
 
 #Authenticated Views

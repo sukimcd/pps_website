@@ -1,0 +1,18 @@
+{#  Login Dialog to appear on "unauth_error.html" and other pages  #}
+
+  <script>
+    
+      document.getElementById("Login").addEventListener("click", function(evt){
+      ("#login_dialog").dialog();
+      })
+
+  </script>
+  
+  <div id='login_dialog' title='Login'>
+      <form method='POST' action=''>
+          {{ login_dialog.as_table }}
+          <input id='login' type='submit' value="Login"/>
+      </form>
+
+      <a href="/member/create">Create new Member Account</a>
+  </div>

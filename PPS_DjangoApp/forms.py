@@ -5,4 +5,6 @@ from .models import Member
 
 
 class MemberForm(forms.ModelForm):
-    pass
+    class Meta:
+        model = Member
+        fields = '__all__'

@@ -82,13 +82,13 @@ PROVINCES = (
 
 
 class Address(models.Model):
-    country = models.CharField(max_length=50)
-    address = models.CharField(max_length=256)
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=2, choices=STATES, default='OR')
-    zip = models.PositiveSmallIntegerField()
-    province = models.CharField(max_length=2, choices=PROVINCES, default='BC')
-    postal_code = models.CharField(max_length=7)
+    country = models.CharField(max_length=50, null=True, blank=True)
+    address = models.CharField(max_length=256, null=True, blank=True)
+    city = models.CharField(max_length=50, null=True, blank=True)
+    state = models.CharField(max_length=2, null=True, blank=True, choices=STATES, default='OR')
+    zip = models.PositiveSmallIntegerField(null=True, blank=True)
+    province = models.CharField(max_length=2, null=True, blank=True, choices=PROVINCES, default='BC')
+    postal_code = models.CharField(max_length=7, null=True, blank=True)
 
 
 class Member(models.Model):

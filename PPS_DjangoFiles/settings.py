@@ -86,7 +86,7 @@ USE_TZ = True
 
 
 #Login URLs, including Middelware that determines which pages require/don't need login.
-LOGIN_URL = '/login/'
+LOGIN_URL = '/unauth_error/'
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -97,8 +97,9 @@ LOGIN_REQUIRED_URLS = (
 LOGIN_REQUIRED_URLS_EXCEPTIONS = (
     r'^$',
     r'/login(.*)$',
-    r'/resources/(.*)$'
-    r'/support/(.*)$'
+    r'/resources/(.*)$',
+    r'/support/(.*)$',
+    r'/unauth_error/',
     )
 
 

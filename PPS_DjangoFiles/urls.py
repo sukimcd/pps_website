@@ -21,7 +21,8 @@ from PPS_DjangoApp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='PPS_Home'),
-    #url(r'^member/create/$', views.create_member),
+    url(r'^unauth_error/$', views.unauth_error),
+    url(r'^member/create/$', views.create_member),
     url(r'^member/detail/(?P<pk>\d*)/$', views.account),
     #url(r'^member/update/(?P<pk>\d*)/$', views.update_member),
     ]
