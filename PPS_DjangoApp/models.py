@@ -1,88 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-
-STATES = (
-    ('AK', 'Alaska'),
-    ('AL', 'Alabama'),
-    ('AR', 'Arkansas'),
-    ('AS', 'American Samoa'),
-    ('AZ', 'Arizona'),
-    ('CA', 'California'),
-    ('CO', 'Colorado'),
-    ('CT', 'Connecticut'),
-    ('DC', 'District of Columbia'),
-    ('DE', 'Delaware'),
-    ('FL', 'Florida'),
-    ('FM', 'Federated States of Microsnesia'),
-    ('GA', 'Georgia'),
-    ('GU', 'Guam'),
-    ('HI', 'Hawaii'),
-    ('IA', 'Iowa'),
-    ('ID', 'Idaho'),
-    ('IL', 'Illinois'),
-    ('IN', 'Indiana'),
-    ('KS', 'Kansas'),
-    ('KY', 'Kentucky'),
-    ('LA', 'Louisiana'),
-    ('MA', 'Massachusetts'),
-    ('MD', 'Maryland'),
-    ('ME', 'Maine'),
-    ('MI', 'Michigan'),
-    ('MN', 'Minnesota'),
-    ('MO', 'Missouri'),
-    ('MP', 'Northern Mariana Islands'),
-    ('MS', 'Mississippi'),
-    ('MT', 'Montana'),
-    ('NA', 'National'),
-    ('NC', 'North Carolina'),
-    ('ND', 'North Dakota'),
-    ('NE', 'Nebraska'),
-    ('NH', 'New Hampshire'),
-    ('NJ', 'New Jersey'),
-    ('NM', 'New Mexico'),
-    ('NV', 'Nevada'),
-    ('NY', 'New York'),
-    ('OH', 'Ohio'),
-    ('OK', 'Oklahoma'),
-    ('OR', 'Oregon'),
-    ('PA', 'Pennsylvania'),
-    ('PR', 'Puerto Rico'),
-    ('RI', 'Rhode Island'),
-    ('SC', 'South Carolina'),
-    ('SD', 'South Dakota'),
-    ('TN', 'Tennessee'),
-    ('TX', 'Texas'),
-    ('UT', 'Utah'),
-    ('VA', 'Virginia'),
-    ('VI', 'Virgin Islands'),
-    ('VT', 'Vermont'),
-    ('WA', 'Washington'),
-    ('WI', 'Wisconsin'),
-    ('WV', 'West Virginia'),
-    ('WY', 'Wyoming')
-  )
-
-PROVINCES = (
-    ('AB', 'Alberta'),
-    ('BC', 'British Columbia'),
-    ('LB', 'Labrador'),
-    ('MB', 'Manitoba'),
-    ('NB', 'New Brunswick'),
-    ('NF', 'Newfoundland'),
-    ('NS', 'Nova Scotia'),
-    ('NU', 'Nunavut'),
-    ('NW', 'North West Terr.'),
-    ('ON', 'Ontario'),
-    ('PE', 'Prince Edward Is.'),
-    ('QC', 'Quebec'),
-    ('SK', 'Saskatchewen'),
-    ('YU', 'Yukon')
-)
+from .choices import COUNTRIES, STATES, PROVINCES, PRONOUNS
 
 
 class Address(models.Model):
-    country = models.CharField(max_length=50, null=True, blank=True)
+    country = models.CharField(max_length=50, null=True, blank=True, choices=COUNTRIES, default='USA')
     address = models.CharField(max_length=256, null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)
     state = models.CharField(max_length=2, null=True, blank=True, choices=STATES, default='OR')
@@ -90,13 +12,17 @@ class Address(models.Model):
     province = models.CharField(max_length=2, null=True, blank=True, choices=PROVINCES, default='BC')
     postal_code = models.CharField(max_length=7, null=True, blank=True)
 
+    def __str__(self):
+        return "{}, {}".format(self.address.city, self.address.state)
+
 
 class Member(models.Model):
     user = models.OneToOneField(User)
+    offline_name = models.TextField()
     address = models.ForeignKey(Address, related_name='member_address_is')
     birthdate = models.DateField(auto_now_add=False)
     gender = models.TextField(null=True, blank=True)
-    pronouns = models.TextField(null=True, blank=True)
+    pronouns = models.CharField(max_length=3, null=True, blank=True, choices=PRONOUNS)
     bio = models.TextField()
     issubscribed = models.BooleanField(default=False)
     group_coord = models.BooleanField(default=False)
