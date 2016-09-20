@@ -95,7 +95,7 @@ LOGIN_REQUIRED_URLS = (
 )
 
 LOGIN_REQUIRED_URLS_EXCEPTIONS = (
-    r'^$',
+    r'/',
     r'/login(.*)$',
     r'/resources/(.*)$',
     r'/support/(.*)$',

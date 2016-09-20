@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Member
 from .forms import MemberForm
@@ -21,6 +21,10 @@ def create_member(request):
     regform = MemberForm(request.POST or None)
     pagename = 'Create a Member Account'
     context = {'registration': regform, 'page_title': pagename}
+    if regform.is_valid():
+        reg = regform.save(commit=False)
+        reg.save()
+        return redirect()
 
     return render(request, 'create_member.html', context)
 

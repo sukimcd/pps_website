@@ -6,7 +6,10 @@
 {% block nav %}
 
     {% include 'nav.html' %}
-
+    <div id="pagename">
+        Authentication Required
+    </div>
+    
 {% endblock %}
 
 
@@ -14,18 +17,16 @@
         
 <div id='container'>
     
-    <div id="pagename">
-        Authentication Required
-    </div>
-
-        <h4>You need to log in to view that page</h4>
-        <p>You have requested a page that can only be accessed by active members of the Post-Polio Syndrome Support
-            website. Please enter your Username and Password in the dialog below if you are already a Member, or click
-            on the "Create Account" button shown below to join.</p>
+    <h4>You need to log in to view that page</h4>
+    <p>You have requested a page that can only be accessed by active members of the Post-Polio Syndrome Support
+        website. Please enter your Username and Password in the dialog below if you are already a Member, or click
+        on the "Create Account" button shown below to join.</p>
 
     <div>
         {% include 'login_dialog.html' %}
-    </div> 
+    </div>
+    
+    
     
 </div>
 

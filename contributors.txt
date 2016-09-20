@@ -1,1 +1,2 @@
-Initial design and configuration created by Suki L. McDonough.
+Suki L. McDonough: Initial website design and configuration
+Deborah J. Ruppert: data modeling assistance and design feedback
