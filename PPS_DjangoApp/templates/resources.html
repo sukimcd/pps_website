@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block nav %}
+
+{% include 'nav.html' %}
+
+{% endblock %}
+
+
+{% block pagespecs %}
+        
+<div id='container'>
+    
+    <div id='article_title'>
+        Resources for:
+    </div>
+
+    {% include 'resourcesnav.html' %}
+
+</div>
+
+{% endblock %}

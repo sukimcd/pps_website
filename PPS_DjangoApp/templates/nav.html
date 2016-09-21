@@ -1,8 +1,4 @@
-<!--          PPS Navigation Bar HTML file          -->
-
-<link rel="stylesheet"
-          type="text/css"
-          href="/static/css/nav.css">
+<!--          PPS Page Navigation Bar HTML file          -->
 
 
 <nav>
@@ -13,17 +9,17 @@
 
 
     <ul>
-        <li>About Post-Polio Syndrome</li>
+        <li><a href="/">About Post-Polio Syndrome</a></li>
             {% if request.user.is_authenticated %}
-                <li>Logout</li>
+                <li><a href="/">Logout</a></li>
             {% else %}
-                <li>Member Login</li>
+                <li><a href="login_dialog.html">Member Login</a></li>
             {% endif %}
-        <li>Join Our Mailing List</li>
-        <li>Find a Support Group</li>
-        <li>Chat with other Polio Survivors</li>
-        <li>Resources</li>
-        <li>Contact Us</li>
+        <li><a href="mailist.html">Join Our Mailing List</a></li>
+        <li><a href="spprtgroups.html">Find a Support Group</a></li>
+        <li><a href="chat.html">Chat with other Polio Survivors</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
     </ul>
 
 

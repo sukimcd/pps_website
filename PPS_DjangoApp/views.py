@@ -7,9 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
 
 
-#Unauthenticated Views
+# Unauthenticated Views
 def home(request):
-    #This view is the primary page for the website.
+    # This view is the primary page for the website.
     authform = AuthenticationForm(request.POST or None)
     pagename = 'Post-Polio Syndrome'
     context = {'login_dialog': authform, 'page_title': pagename}
@@ -17,7 +17,7 @@ def home(request):
 
 
 def create_member(request):
-    #This view allows visitors to register for Membership so that they can see the Authenticated pages of the site.
+    # This view allows visitors to register for Membership so that they can see the Authenticated pages of the site.
     regform = MemberForm(request.POST or None)
     pagename = 'Create a Member Account'
     context = {'registration': regform, 'page_title': pagename}
@@ -31,8 +31,8 @@ def create_member(request):
 
 def resources(request):
     '''
-    This view allows a visitor to look for Resources appropriate to per particular situation (Survivor, Caregiver, Health
-    Care Professional).
+    This view allows a visitor to look for Resources appropriate to per particular situation (Survivor, Caregiver,
+    Health Care Professional).
     '''
     authform = AuthenticationForm(request.POST or None)
     pagename = 'Post-Polio Syndrome Resources'
@@ -40,9 +40,33 @@ def resources(request):
 
     return render(request, 'resources.html', context)
 
+def survivor_resources(request):
+    # This view allows a Survivor to look for Survivor-specific Resources.
+    authform = AuthenticationForm(request.POST or None)
+    pagename = 'Resources for Polio Survivors'
+    context = {'login_dialog': authform, 'page_title': pagename}
+
+    return render(request, 'survivor_resources.html', context)
+
+def caregiver_resources(request):
+    # This view allows a Caregiver to look for Caregiver-specific Resources.
+    authform = AuthenticationForm(request.POST or None)
+    pagename = 'Resources for Post-Polio Syndrome Caregivers'
+    context = {'login_dialog': authform, 'page_title': pagename}
+
+    return render(request, 'caregiver_resources.html', context)
+
+def hcp_resources(request):
+    # This view allows a Health-Care Professional to look for HCP-specific Resources.
+    authform = AuthenticationForm(request.POST or None)
+    pagename = 'Resources for Post-Polio Syndrome Health-Care Professionals'
+    context = {'login_dialog': authform, 'page_title': pagename}
+
+    return render(request, 'hcp_resources.html', context)
+
 
 def contact(request):
-    #This view allows visitors to contact the site admin via e-mail (request info, report bugs, etc.).
+    # This view allows visitors to contact the site admin via e-mail (request info, report bugs, etc.).
     authform = AuthenticationForm(request.POST or None)
     pagename = 'Contact Us'
     context = {'login_dialog': authform, 'page_title': pagename}
@@ -75,8 +99,7 @@ def unauth_error(request):
     return render(request, 'unauth_error.html', context)
 
 
-
-#Authenticated Views
+# Authenticated Views
 def account(request):
     '''
     This view allows Members to make changes to Member Account info, and therefore must accept both POST and GET
@@ -89,9 +112,7 @@ def account(request):
 
 
 def chat(request):
-    '''
-    This view allows Members to enter into real-time chat sessions with one another, either one-on-one or in groups.
-    '''
+    # This view allows Members to enter real-time chat sessions with one another, either one-on-one or in groups.
     pagename = 'Chat with Other Members'
     context = {'page_title': pagename}
 
