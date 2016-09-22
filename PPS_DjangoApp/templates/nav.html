@@ -1,26 +1,16 @@
 <!--          PPS Page Navigation Bar HTML file          -->
 
 
-<nav>
-
-    <div id="pagename">
-        <span>{{page_title}}</span>
-    </div>
-
-
-    <ul>
-        <li><a href="/">About Post-Polio Syndrome</a></li>
-            {% if request.user.is_authenticated %}
-                <li><a href="/">Logout</a></li>
-            {% else %}
-                <li><a href="login_dialog.html">Member Login</a></li>
-            {% endif %}
-        <li><a href="mailist.html">Join Our Mailing List</a></li>
-        <li><a href="spprtgroups.html">Find a Support Group</a></li>
-        <li><a href="chat.html">Chat with other Polio Survivors</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-
-
-</nav>
+<ul>
+    <li><a href="/">About Post-Polio Syndrome</a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href="/">Logout</a></li>
+        {% else %}
+            <li><a href="login_dialog.html">Member Login</a></li>
+        {% endif %}
+    <li><a href="maillist.html">Join Our Mailing List</a></li>
+    <li><a href="spprtgroups.html">Find a Support Group</a></li>
+    <li><a href="chat.html">Chat with other Polio Survivors</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+</ul>

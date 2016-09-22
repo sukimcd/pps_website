@@ -11,16 +11,15 @@ from django.contrib.auth.forms import AuthenticationForm
 def home(request):
     # This view is the primary page for the website.
     authform = AuthenticationForm(request.POST or None)
-    pagename = 'Post-Polio Syndrome'
-    context = {'login_dialog': authform, 'page_title': pagename}
+    context = {'login_dialog': authform}
+
     return render(request, 'PPS_Home.html', context)
 
 
 def create_member(request):
     # This view allows visitors to register for Membership so that they can see the Authenticated pages of the site.
     regform = MemberForm(request.POST or None)
-    pagename = 'Create a Member Account'
-    context = {'registration': regform, 'page_title': pagename}
+    context = {'registration': regform}
     if regform.is_valid():
         reg = regform.save(commit=False)
         reg.save()
@@ -29,13 +28,14 @@ def create_member(request):
     return render(request, 'create_member.html', context)
 
 
-def resources(request):
+def resources(request, slug):
     '''
     This view allows a visitor to look for Resources appropriate to per particular situation (Survivor, Caregiver,
     Health Care Professional).
     '''
     authform = AuthenticationForm(request.POST or None)
     pagename = 'Post-Polio Syndrome Resources'
+    page = ResourcePage.objects.get(slug=slug)
     context = {'login_dialog': authform, 'page_title': pagename}
 
     return render(request, 'resources.html', context)
@@ -140,3 +140,5 @@ def mailing_list(request):
     context = {'page_title': pagename}
 
     return render(request, 'chat.html', context)
+
+

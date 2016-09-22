@@ -37,3 +37,13 @@ class SupportGroup(models.Model):
     mtg_time = models.DateField()
     members = models.ManyToManyField(Member)
 
+
+class TextPage(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False)
+    text_content = models.TextField( null=False, blank=False)
+    slug = models.SlugField()
+
+
+class FormPage(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False)
+

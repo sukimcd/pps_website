@@ -6,19 +6,22 @@
 
         <title>Post-Polio Syndrome Information and Resources</title>
         <link rel="stylesheet"
-	           type="text/css" 
+	           type="text/css"
 	           href="/static/css/base.css">
 
     </head>
 
-    
+
     <body>
 
-        {% block nav %}
+        <nav>
+            <div id="pagename">
+                <span>{% block title %}Post-Polio Syndrome{% endblock %}</span>
+            </div>
 
-        {% endblock %}
+            {% include 'nav.html' %}
+        </nav>
 
-        
         {% block pagespecs %}
 
         {% endblock %}
@@ -32,5 +35,5 @@
             <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         {% endblock %}
     </footer>
-    
+
 </html>

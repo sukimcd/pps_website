@@ -1,4 +1,5 @@
-"""PPS_DjangoFiles URL Configuration
+"""
+PPS_DjangoFiles URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -13,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import login
@@ -22,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='PPS_Home'),
     url(r'^unauth_error/$', views.unauth_error),
+    url(r'^resources', views.resources),
     url(r'^member/create/$', views.create_member),
     url(r'^member/detail/(?P<pk>\d*)/$', views.account),
     #url(r'^member/update/(?P<pk>\d*)/$', views.update_member),
