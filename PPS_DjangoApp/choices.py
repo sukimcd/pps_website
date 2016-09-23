@@ -1,5 +1,5 @@
-###                                     choice.py                                 ###
-###          Migrating all "choice" lists into separate file for clarity          ###
+###                                     choice.py                                  ###
+###    Migrated all Address-based "choice" lists into separate file for clarity    ###
 
 COUNTRIES = (
     ('CAN', 'Canada'),
@@ -19,7 +19,7 @@ STATES = (
     ('DC', 'District of Columbia'),
     ('DE', 'Delaware'),
     ('FL', 'Florida'),
-    ('FM', 'Federated States of Microsnesia'),
+    ('FM', 'Federated States of Micronesia'),
     ('GA', 'Georgia'),
     ('GU', 'Guam'),
     ('HI', 'Hawaii'),
@@ -84,13 +84,4 @@ PROVINCES = (
     ('QC', 'Quebec'),
     ('SK', 'Saskatchewen'),
     ('YU', 'Yukon')
-)
-
-
-PRONOUNS = (
-    ('F', '\"she\" and \"her\"'),
-    ('M', '\"he\" and \"him\"'),
-    ('NP', '\"they\" and \"their\"'),
-    ('NS1', '\"zie\" and \"zir\"'),
-    ('NS2', '\"per\" and \"per\"'),
 )

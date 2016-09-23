@@ -2,20 +2,19 @@
 
 
 {% block title %}
-Post-Polio Syndrome Resources
+Resources for Polio Survivors
 {% endblock %}
-
 
 {% block pagespecs %}
         
     <div id='container'>
-
+        
         <div id='article_title'>
-            Resources for:
+            Resources for Polio Survivors
         </div>
 
-        {% include 'resourcesnav.html' %}
-
+        {{ survivor_resources.as_table }}
+    
     </div>
 
 {% endblock %}

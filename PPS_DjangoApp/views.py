@@ -74,19 +74,6 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
-def spprtgroups(request):
-    '''
-    This view allows a Member to locate either an online Support Group, or a face-to-face Support Group within a pre-set
-    distance radius of a specific geographical region (based on their current location when provided, otherwise based on
-    a specific city name).
-    '''
-    authform = AuthenticationForm(request.POST or None)
-    pagename = 'Find a Support Group'
-    context = {'login_dialog': authform, 'page_title': pagename}
-
-    return render(request, 'spprtgroups.html', context)
-
-
 def unauth_error(request):
     '''
     This view displays an error message notifying Members when a page has been requested that requires Authentication.
@@ -100,17 +87,6 @@ def unauth_error(request):
 
 
 # Authenticated Views
-def account(request):
-    '''
-    This view allows Members to make changes to Member Account info, and therefore must accept both POST and GET
-    requests.
-    '''
-    pagename = 'Manage Your Member Account'
-    context = {'page_title': pagename}
-
-    return render(request, 'account.html', context)
-
-
 def chat(request):
     # This view allows Members to enter real-time chat sessions with one another, either one-on-one or in groups.
     pagename = 'Chat with Other Members'
