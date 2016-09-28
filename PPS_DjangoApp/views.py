@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Member
-from .forms import MemberForm
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
+from .models import ResourcePage
 
 
 # Unauthenticated Views
@@ -34,33 +33,32 @@ def resources(request, slug):
     Health Care Professional).
     '''
     authform = AuthenticationForm(request.POST or None)
-    pagename = 'Post-Polio Syndrome Resources'
     page = ResourcePage.objects.get(slug=slug)
-    context = {'login_dialog': authform, 'page_title': pagename}
+    context = {'login_dialog': authform}
 
     return render(request, 'resources.html', context)
 
-def survivor_resources(request):
+def survivor_resources(request, slug):
     # This view allows a Survivor to look for Survivor-specific Resources.
     authform = AuthenticationForm(request.POST or None)
-    pagename = 'Resources for Polio Survivors'
-    context = {'login_dialog': authform, 'page_title': pagename}
+    page = ResourcePage.objects.get(slug=slug)
+    context = {'login_dialog': authform, 'page': page}
 
-    return render(request, 'survivor_resources.html', context)
+    return render(request, 'TextPage.html', context)
 
-def caregiver_resources(request):
+def caregiver_resources(request, slug):
     # This view allows a Caregiver to look for Caregiver-specific Resources.
     authform = AuthenticationForm(request.POST or None)
-    pagename = 'Resources for Post-Polio Syndrome Caregivers'
-    context = {'login_dialog': authform, 'page_title': pagename}
+    page = ResourcePage.objects.get(slug=slug)
+    context = {'login_dialog': authform, 'page': page}
 
     return render(request, 'caregiver_resources.html', context)
 
-def hcp_resources(request):
+def hcp_resources(request, slug):
     # This view allows a Health-Care Professional to look for HCP-specific Resources.
     authform = AuthenticationForm(request.POST or None)
-    pagename = 'Resources for Post-Polio Syndrome Health-Care Professionals'
-    context = {'login_dialog': authform, 'page_title': pagename}
+    page = ResourcePage.objects.get(slug=slug)
+    context = {'login_dialog': authform, 'page': page}
 
     return render(request, 'hcp_resources.html', context)
 

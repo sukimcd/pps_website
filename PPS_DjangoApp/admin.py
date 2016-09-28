@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Address, Member, SupportGroup
+from .models import Page, TextPage, ResourcePage
 
 # Register your models here.
 
-admin.site.register(Address)
-admin.site.register(Member)
-admin.site.register(SupportGroup)
+admin.site.register(Page)
+admin.site.register(TextPage)
+admin.site.register(ResourcePage)

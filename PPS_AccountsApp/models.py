@@ -11,6 +11,25 @@ PRONOUNS = (
 )
 
 
+class Address(models.Model):
+    country = models.CharField(max_length=50, null=True, blank=True, choices=COUNTRIES, default='USA')
+    address = models.CharField(max_length=256, null=True, blank=True)
+    city = models.CharField(max_length=50, null=True, blank=True)
+    state = models.CharField(max_length=2, null=True, blank=True, choices=STATES, default='OR')
+    zip = models.PositiveSmallIntegerField(null=True, blank=True)
+    province = models.CharField(max_length=2, null=True, blank=True, choices=PROVINCES, default='BC')
+    postal_code = models.CharField(max_length=7, null=True, blank=True)
+
+    def __str__(self):
+        return "{}, {}".format(self.address.city, self.address.state)
+
+
+class SupportGroup(models.Model):
+    loc_addr = models.ForeignKey(Address, related_name='group_address_is')
+    mtg_day = models.DateField()
+    mtg_time = models.DateField()
+
+
 class Member(models.Model):
     user = models.OneToOneField(User)
     offline_name = models.TextField()
@@ -32,24 +51,5 @@ class Member(models.Model):
 
 
 class Classification(models.Model):
-    member = models.ManyToMany(Member)
+    member = models.ManyToManyField(Member)
     class_title = models.CharField(max_length=25, null=False, blank=False)
-
-
-class SupportGroup(models.Model):
-    loc_addr = models.ForeignKey(Address, related_name='group_address_is')
-    mtg_day = models.DateField()
-    mtg_time = models.DateField()
-
-
-class Address(models.Model):
-    country = models.CharField(max_length=50, null=True, blank=True, choices=COUNTRIES, default='USA')
-    address = models.CharField(max_length=256, null=True, blank=True)
-    city = models.CharField(max_length=50, null=True, blank=True)
-    state = models.CharField(max_length=2, null=True, blank=True, choices=STATES, default='OR')
-    zip = models.PositiveSmallIntegerField(null=True, blank=True)
-    province = models.CharField(max_length=2, null=True, blank=True, choices=PROVINCES, default='BC')
-    postal_code = models.CharField(max_length=7, null=True, blank=True)
-
-    def __str__(self):
-        return "{}, {}".format(self.address.city, self.address.state)
