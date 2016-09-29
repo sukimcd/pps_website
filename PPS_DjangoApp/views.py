@@ -27,40 +27,23 @@ def create_member(request):
     return render(request, 'create_member.html', context)
 
 
-def resources(request, slug):
+def resources(request):
     '''
-    This view allows a visitor to look for Resources appropriate to per particular situation (Survivor, Caregiver,
+    This view allows a visitor to navigate to a Resource Page appropriate to per particular situation (Survivor, Caregiver,
     Health Care Professional).
     '''
     authform = AuthenticationForm(request.POST or None)
-    page = ResourcePage.objects.get(slug=slug)
     context = {'login_dialog': authform}
 
     return render(request, 'resources.html', context)
 
-def survivor_resources(request, slug):
-    # This view allows a Survivor to look for Survivor-specific Resources.
+def resource_type(request, slug):
+    # This view allows a Member to look for situation-specific Resources.
     authform = AuthenticationForm(request.POST or None)
     page = ResourcePage.objects.get(slug=slug)
     context = {'login_dialog': authform, 'page': page}
 
-    return render(request, 'TextPage.html', context)
-
-def caregiver_resources(request, slug):
-    # This view allows a Caregiver to look for Caregiver-specific Resources.
-    authform = AuthenticationForm(request.POST or None)
-    page = ResourcePage.objects.get(slug=slug)
-    context = {'login_dialog': authform, 'page': page}
-
-    return render(request, 'caregiver_resources.html', context)
-
-def hcp_resources(request, slug):
-    # This view allows a Health-Care Professional to look for HCP-specific Resources.
-    authform = AuthenticationForm(request.POST or None)
-    page = ResourcePage.objects.get(slug=slug)
-    context = {'login_dialog': authform, 'page': page}
-
-    return render(request, 'hcp_resources.html', context)
+    return render(request, 'ResourcePage.html', context)
 
 
 def contact(request):

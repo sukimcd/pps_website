@@ -1,4 +1,5 @@
 from django.db import models
+from PPS_AccountsApp.models import Address
 
 
 class Page(models.Model):
@@ -12,9 +13,17 @@ class TextPage(Page):
 
 class ResourcePage(Page):
     resource_listing = models.TextField(null=False, blank=False)
-    resource_title = models.CharField(max_length=250)
 
     def __str__(self):
         return self.title
 
 
+class ResourceListing(models.Model):
+    resource_page = models.ForeignKey(ResourcePage, related_name='listings')
+    ext_ref = models.URLField(null=True)
+    ext_source = models.TextField()
+    resource_title = models.CharField(max_length=250)
+    resource_locator = models.OneToOneField(Address)
+
+    def __str__(self):
+        return self.resource_title

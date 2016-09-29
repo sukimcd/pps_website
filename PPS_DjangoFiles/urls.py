@@ -24,10 +24,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='PPS_Home'),
     url(r'^unauth_error/$', views.unauth_error),
-    #url(r'^resources$', views.resources),
+    url(r'^resources/?$', views.resources),
     url(r'^member/create/$', acctsviews.create_member),
     url(r'^member/detail/(?P<pk>\d*)/$', acctsviews.account),
     #url(r'^member/update/(?P<pk>\d*)/$', acctsviews.update_member),
-    url(r'^resources/(?P<slug>[a-zA-Z0-9\-]*)', views.survivor_resources),
-
-]
+    url(r'^resources/(?P<slug>[a-zA-Z0-9\-]*)', views.resource_type),
+ ]

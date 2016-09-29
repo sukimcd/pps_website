@@ -19,9 +19,11 @@ class Address(models.Model):
     zip = models.PositiveSmallIntegerField(null=True, blank=True)
     province = models.CharField(max_length=2, null=True, blank=True, choices=PROVINCES, default='BC')
     postal_code = models.CharField(max_length=7, null=True, blank=True)
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
 
     def __str__(self):
-        return "{}, {}".format(self.address.city, self.address.state)
+        return "{}, {}".format(self.city, self.state)
 
 
 class SupportGroup(models.Model):
@@ -42,7 +44,7 @@ class Member(models.Model):
     profile_img = models.ImageField(null=True)
     profile_img_thumb = models.ImageField(null=True)
     issubscribed = models.BooleanField(default=False)
-    sppt_grp_memb = models.ManyToManyField(SupportGroup, null=True, blank=True)
+    sppt_grp_memb = models.ManyToManyField(SupportGroup, blank=True)
     group_coord = models.BooleanField(default=False)
     siteadmin = models.BooleanField(default=False)
 
