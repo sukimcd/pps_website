@@ -25,6 +25,8 @@ SECRET_KEY = 'y%!ph0k^n1achmhg3xxupev7^fv%7$br5a$_3_s*(pkfkl$i!p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ADMINS = [('Suki', 'mcdonough.suki@gmail.com'), ('Deborah', 'deborah.ruppert@yahoo.com')]
+
 ALLOWED_HOSTS = []
 
 
@@ -59,6 +61,15 @@ DATABASES = {
 }
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mcdonough.suki@gmail.com'
+EMAIL_HOST_PASSWORD = 'J0bS3arch_20!6'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = 'mail@pps.org'
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,7 +79,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'PPS_DjangoApp',
     'PPS_AccountsApp',
-
 ]
 
 
