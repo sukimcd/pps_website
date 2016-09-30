@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ page.title }}
+{% endblock %}
+
+
+{% block pagespecs %}
+        
+<div id='container'>
+
+    <div id='h4'>
+        {{ page.resource_title }}
+    </div>
+
+    <p>
+        {{ page.resource_listing }}
+    </p>
+
+</div>
+
+{% endblock %}
